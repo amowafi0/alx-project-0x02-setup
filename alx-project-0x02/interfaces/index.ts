@@ -95,3 +95,14 @@ export interface NavItem {
     href: string;
     active?: boolean;
 }
+// ButtonProps interface
+export interface ButtonProps {
+    children: React.ReactNode;
+    onClick?: () => void;
+    size?: 'small' | 'medium' | 'large';
+    shape?: 'rounded-sm' | 'rounded-md' | 'rounded-full';
+    variant?: 'primary' | 'secondary' | 'outline';
+    disabled?: boolean;
+    className?: string;
+    type?: 'button' | 'submit' | 'reset';
+}

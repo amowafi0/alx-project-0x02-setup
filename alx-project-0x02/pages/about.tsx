@@ -1,6 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import Header from '../components/layout/Header';
+import Button from '../components/common/Button';
 
 const AboutPage: React.FC = () => {
     return (
@@ -74,6 +75,154 @@ const AboutPage: React.FC = () => {
                                         <span className="text-gray-700">Modern development practices</span>
                                     </li>
                                 </ul>
+                            </div>
+                        </div>
+
+                        {/* Button Component Demo Section */}
+                        <div className="bg-white rounded-xl shadow-lg p-8 mb-12">
+                            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+                                Button Component Demo
+                            </h2>
+
+                            <p className="text-gray-600 mb-8 text-center">
+                                Here are examples of our reusable Button component with different sizes and shapes:
+                            </p>
+
+                            {/* Three buttons with different sizes and shapes as required */}
+                            <div className="flex flex-wrap justify-center gap-6 mb-12">
+                                <Button
+                                    size="small"
+                                    shape="rounded-sm"
+                                    variant="primary"
+                                    onClick={() => alert('Small button with sharp corners clicked!')}
+                                >
+                                    Small & Sharp
+                                </Button>
+
+                                <Button
+                                    size="medium"
+                                    shape="rounded-md"
+                                    variant="secondary"
+                                    onClick={() => alert('Medium button with rounded corners clicked!')}
+                                >
+                                    Medium & Rounded
+                                </Button>
+
+                                <Button
+                                    size="large"
+                                    shape="rounded-full"
+                                    variant="outline"
+                                    onClick={() => alert('Large button with full rounded corners clicked!')}
+                                >
+                                    Large & Pill Shape
+                                </Button>
+                            </div>
+
+                            {/* Additional examples showing all combinations */}
+                            <div className="space-y-8">
+                                <div>
+                                    <h3 className="text-lg font-semibold text-gray-800 mb-4 text-center">
+                                        All Size Variations
+                                    </h3>
+                                    <div className="flex flex-wrap justify-center gap-4">
+                                        <Button
+                                            size="small"
+                                            shape="rounded-md"
+                                            variant="primary"
+                                            onClick={() => alert('Small button clicked!')}
+                                        >
+                                            Small
+                                        </Button>
+                                        <Button
+                                            size="medium"
+                                            shape="rounded-md"
+                                            variant="primary"
+                                            onClick={() => alert('Medium button clicked!')}
+                                        >
+                                            Medium
+                                        </Button>
+                                        <Button
+                                            size="large"
+                                            shape="rounded-md"
+                                            variant="primary"
+                                            onClick={() => alert('Large button clicked!')}
+                                        >
+                                            Large
+                                        </Button>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <h3 className="text-lg font-semibold text-gray-800 mb-4 text-center">
+                                        All Shape Variations
+                                    </h3>
+                                    <div className="flex flex-wrap justify-center gap-4">
+                                        <Button
+                                            size="medium"
+                                            shape="rounded-sm"
+                                            variant="secondary"
+                                            onClick={() => alert('Sharp corners button clicked!')}
+                                        >
+                                            Sharp Corners
+                                        </Button>
+                                        <Button
+                                            size="medium"
+                                            shape="rounded-md"
+                                            variant="secondary"
+                                            onClick={() => alert('Rounded corners button clicked!')}
+                                        >
+                                            Rounded Corners
+                                        </Button>
+                                        <Button
+                                            size="medium"
+                                            shape="rounded-full"
+                                            variant="secondary"
+                                            onClick={() => alert('Pill shape button clicked!')}
+                                        >
+                                            Pill Shape
+                                        </Button>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <h3 className="text-lg font-semibold text-gray-800 mb-4 text-center">
+                                        Different Variants
+                                    </h3>
+                                    <div className="flex flex-wrap justify-center gap-4">
+                                        <Button
+                                            size="medium"
+                                            shape="rounded-md"
+                                            variant="primary"
+                                            onClick={() => alert('Primary button clicked!')}
+                                        >
+                                            Primary
+                                        </Button>
+                                        <Button
+                                            size="medium"
+                                            shape="rounded-md"
+                                            variant="secondary"
+                                            onClick={() => alert('Secondary button clicked!')}
+                                        >
+                                            Secondary
+                                        </Button>
+                                        <Button
+                                            size="medium"
+                                            shape="rounded-md"
+                                            variant="outline"
+                                            onClick={() => alert('Outline button clicked!')}
+                                        >
+                                            Outline
+                                        </Button>
+                                        <Button
+                                            size="medium"
+                                            shape="rounded-md"
+                                            variant="primary"
+                                            disabled
+                                        >
+                                            Disabled
+                                        </Button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
