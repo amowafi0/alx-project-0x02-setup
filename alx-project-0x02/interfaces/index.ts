@@ -31,6 +31,14 @@ export interface Post {
     body: string;
 }
 
+// PostProps interface for PostCard component
+export interface PostProps {
+    title: string;
+    content: string;
+    userId: number;
+    id?: number;
+}
+
 // Comment interface for API data
 export interface Comment {
     postId: number;
@@ -73,9 +81,10 @@ export interface UserCardProps {
 }
 
 export interface PostModalProps {
-    post: Post | null;
     isOpen: boolean;
     onClose: () => void;
+    onSubmit: (post: { title: string; content: string }) => void;
+    title?: string;
 }
 
 export interface HeaderProps {
@@ -94,15 +103,4 @@ export interface NavItem {
     label: string;
     href: string;
     active?: boolean;
-}
-// ButtonProps interface
-export interface ButtonProps {
-    children: React.ReactNode;
-    onClick?: () => void;
-    size?: 'small' | 'medium' | 'large';
-    shape?: 'rounded-sm' | 'rounded-md' | 'rounded-full';
-    variant?: 'primary' | 'secondary' | 'outline';
-    disabled?: boolean;
-    className?: string;
-    type?: 'button' | 'submit' | 'reset';
 }
