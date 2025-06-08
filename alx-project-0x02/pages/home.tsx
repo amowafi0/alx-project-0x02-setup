@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
-import Header from '../components/layout/Header';
-import Card from '../components/common/Card';
-import Button from '../components/common/Button';
-import PostModal from '../components/common/PostModal';
+import Header from '@/components/layout/Header';
+import Card from '@/components/common/Card';
+import Button from '@/components/common/Button';
+import PostModal from '@/components/common/PostModal';
 
 interface UserPost {
     id: number;
