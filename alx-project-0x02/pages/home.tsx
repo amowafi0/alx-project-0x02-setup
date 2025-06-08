@@ -1,10 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Head from 'next/head';
 import Header from '../components/layout/Header';
-import Card from '../components/common/Card';
-import Button from '../components/common/Button';
+import Card from '@/components/common/Card';
+import Button from '@/components/common/Button';
+import PostModal from '@/components/common/PostModal';
+
+// Interface for user posts
+interface UserPost {
+    id: number;
+    title: string;
+    content: string;
+    createdAt: Date;
+}
 
 const HomePage: React.FC = () => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [userPosts, setUserPosts] = useState<UserPost[]>([]);
+
+    // Handle opening the modal
+    const openModal = () => {
+        setIsModalOpen(true);
+    };
+
+    // Handle closing the modal
+    const closeModal = () => {
+        setIsModalOpen(false);
+    };
+
+    // Handle form submission from modal
+    const handlePostSubmit = (postData: { title: string; content: string }) => {
+        const newPost: UserPost = {
+            id: Date.now(), // Simple ID generation
+            title: postData.title,
+            content: postData.content,
+            createdAt: new Date(),
+        };
+
+        setUserPosts(prev => [newPost, ...prev]);
+    };
+
     return (
         <>
             <Head>
@@ -94,9 +128,20 @@ const HomePage: React.FC = () => {
                         </div>
 
                         <div className="mt-16">
-                            <h2 className="text-3xl font-bold text-gray-900 mb-8">
-                                Ready to Get Started?
-                            </h2>
+                            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+                                <h2 className="text-3xl font-bold text-gray-900">
+                                    Ready to Get Started?
+                                </h2>
+                                <Button
+                                    size="medium"
+                                    variant="success"
+                                    shape="rounded-md"
+                                    onClick={openModal}
+                                >
+                                    + Create Post
+                                </Button>
+                            </div>
+
                             <div className="flex flex-col sm:flex-row gap-4 justify-center">
                                 <Button
                                     size="large"
@@ -116,9 +161,42 @@ const HomePage: React.FC = () => {
                                 </Button>
                             </div>
                         </div>
+
+                        {/* User Posts Section */}
+                        {userPosts.length > 0 && (
+                            <div className="mt-16">
+                                <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+                                    Your Recent Posts
+                                </h2>
+                                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                    {userPosts.map((post) => (
+                                        <Card
+                                            key={post.id}
+                                            title={post.title}
+                                            content={post.content}
+                                            variant="bordered"
+                                            onClick={() => alert(`Clicked on post: ${post.title}`)}
+                                        >
+                                            <div className="text-sm text-gray-500 text-center">
+                                                Created: {post.createdAt.toLocaleDateString()} at{' '}
+                                                {post.createdAt.toLocaleTimeString()}
+                                            </div>
+                                        </Card>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
                     </div>
                 </div>
             </main>
+
+            {/* Post Modal */}
+            <PostModal
+                isOpen={isModalOpen}
+                onClose={closeModal}
+                onSubmit={handlePostSubmit}
+                title="Create New Post"
+            />
         </>
     );
 };
