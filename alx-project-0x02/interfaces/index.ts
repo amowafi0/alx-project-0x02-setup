@@ -44,17 +44,22 @@ export interface Comment {
 export interface ButtonProps {
     children: React.ReactNode;
     onClick?: () => void;
-    variant?: 'primary' | 'secondary' | 'outline';
-    size?: 'sm' | 'md' | 'lg';
+    variant?: 'primary' | 'secondary' | 'outline' | 'danger' | 'success';
+    size?: 'small' | 'medium' | 'large';
+    shape?: 'rounded-sm' | 'rounded-md' | 'rounded-full';
     disabled?: boolean;
     className?: string;
     type?: 'button' | 'submit' | 'reset';
 }
 
 export interface CardProps {
-    children: React.ReactNode;
+    title: string;
+    content: string;
+    children?: React.ReactNode;
     className?: string;
     onClick?: () => void;
+    variant?: 'default' | 'gradient' | 'bordered' | 'shadow';
+    icon?: string;
 }
 
 export interface PostCardProps {
